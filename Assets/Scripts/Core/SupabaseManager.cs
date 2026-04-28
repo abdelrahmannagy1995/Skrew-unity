@@ -58,13 +58,24 @@ namespace ScrewGame.Core
         {
             try
             {
+                var resolved = SupabaseConfigLoader.Resolve(_supabaseUrl, _supabaseAnonKey);
+                if (!resolved.IsValid)
+                {
+                    Debug.LogError("[SupabaseManager] Missing Supabase URL or anon key. " +
+                                   "Set SUPABASE_URL/SUPABASE_ANON_KEY env vars, populate " +
+                                   "StreamingAssets/supabase.json, or fill the inspector fields.");
+                    return;
+                }
+
+                Debug.Log($"[SupabaseManager] Loading config from: {resolved.Source}");
+
                 var options = new SupabaseOptions
                 {
                     AutoConnectRealtime = true,
                     AutoRefreshToken    = true,
                 };
 
-                Client = new Supabase.Client(_supabaseUrl, _supabaseAnonKey, options);
+                Client = new Supabase.Client(resolved.Url, resolved.AnonKey, options);
                 await Client.InitializeAsync();
 
                 IsInitialised = true;

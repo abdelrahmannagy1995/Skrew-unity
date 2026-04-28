@@ -86,6 +86,10 @@ InitTestScene*.unity*
 # Addressables default ignores, before user customizations
 /ServerData
 /[Aa]ssets/StreamingAssets/aa*
+
+# Local Supabase config (keys must never be committed). Sample lives in supabase.json.example.
+/[Aa]ssets/StreamingAssets/supabase.json
+/[Aa]ssets/StreamingAssets/supabase.json.meta
 /[Aa]ssets/AddressableAssetsData/link.xml*
 /[Aa]ssets/Addressables_Temp*
 # By default, Addressables content builds will generate addressables_content_state.bin
