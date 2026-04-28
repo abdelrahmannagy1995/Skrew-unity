@@ -11,7 +11,7 @@ CREATE EXTENSION IF NOT EXISTS "pg_cron";
 -- USERS TABLE
 -- =============================================================================
 CREATE TABLE IF NOT EXISTS public.users (
-    id              UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    id              UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     auth_id         UUID UNIQUE NOT NULL REFERENCES auth.users(id) ON DELETE CASCADE,
     username        TEXT NOT NULL UNIQUE,
     display_name    TEXT,
@@ -45,7 +45,7 @@ CREATE TYPE public.match_status AS ENUM (
 );
 
 CREATE TABLE IF NOT EXISTS public.matches (
-    id                  UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    id                  UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     game_mode           public.game_mode NOT NULL DEFAULT 'general',
     status              public.match_status NOT NULL DEFAULT 'waiting',
     host_user_id        UUID NOT NULL REFERENCES public.users(id),
@@ -65,7 +65,7 @@ CREATE TABLE IF NOT EXISTS public.matches (
 -- MATCH PLAYERS TABLE (player seats per match)
 -- =============================================================================
 CREATE TABLE IF NOT EXISTS public.match_players (
-    id              UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    id              UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     match_id        UUID NOT NULL REFERENCES public.matches(id) ON DELETE CASCADE,
     user_id         UUID NOT NULL REFERENCES public.users(id),
     seat_index      INTEGER NOT NULL,             -- 0-5 seat order
@@ -86,7 +86,7 @@ CREATE TABLE IF NOT EXISTS public.match_players (
 -- GAME STATE TABLE (server-authoritative hidden state)
 -- =============================================================================
 CREATE TABLE IF NOT EXISTS public.game_state (
-    id              UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    id              UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     match_id        UUID NOT NULL UNIQUE REFERENCES public.matches(id) ON DELETE CASCADE,
     deck            JSONB NOT NULL DEFAULT '[]',   -- full shuffled deck
     draw_pile       JSONB NOT NULL DEFAULT '[]',   -- remaining draw pile
@@ -99,7 +99,7 @@ CREATE TABLE IF NOT EXISTS public.game_state (
 -- MESSAGES TABLE (persistent lobby chat)
 -- =============================================================================
 CREATE TABLE IF NOT EXISTS public.messages (
-    id          UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    id          UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     match_id    UUID NOT NULL REFERENCES public.matches(id) ON DELETE CASCADE,
     user_id     UUID NOT NULL REFERENCES public.users(id),
     content     TEXT NOT NULL CHECK (char_length(content) <= 500),
@@ -112,7 +112,7 @@ CREATE TABLE IF NOT EXISTS public.messages (
 CREATE TYPE public.mission_period AS ENUM ('daily', 'weekly');
 
 CREATE TABLE IF NOT EXISTS public.missions (
-    id              UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    id              UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     title_en        TEXT NOT NULL,
     title_ar        TEXT NOT NULL,
     description_en  TEXT NOT NULL,
@@ -128,7 +128,7 @@ CREATE TABLE IF NOT EXISTS public.missions (
 -- USER MISSIONS TABLE (progress tracking)
 -- =============================================================================
 CREATE TABLE IF NOT EXISTS public.user_missions (
-    id              UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    id              UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     user_id         UUID NOT NULL REFERENCES public.users(id) ON DELETE CASCADE,
     mission_id      UUID NOT NULL REFERENCES public.missions(id) ON DELETE CASCADE,
     progress        INTEGER NOT NULL DEFAULT 0,
@@ -143,7 +143,7 @@ CREATE TABLE IF NOT EXISTS public.user_missions (
 -- BADGES TABLE
 -- =============================================================================
 CREATE TABLE IF NOT EXISTS public.badges (
-    id          UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    id          UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     name_en     TEXT NOT NULL,
     name_ar     TEXT NOT NULL,
     icon_url    TEXT,
@@ -154,7 +154,7 @@ CREATE TABLE IF NOT EXISTS public.badges (
 -- USER BADGES TABLE
 -- =============================================================================
 CREATE TABLE IF NOT EXISTS public.user_badges (
-    id          UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    id          UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     user_id     UUID NOT NULL REFERENCES public.users(id) ON DELETE CASCADE,
     badge_id    UUID NOT NULL REFERENCES public.badges(id) ON DELETE CASCADE,
     earned_at   TIMESTAMPTZ NOT NULL DEFAULT NOW(),
@@ -165,7 +165,7 @@ CREATE TABLE IF NOT EXISTS public.user_badges (
 -- COSMETICS TABLE (card backs, etc.)
 -- =============================================================================
 CREATE TABLE IF NOT EXISTS public.cosmetics (
-    id          UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    id          UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     name_en     TEXT NOT NULL,
     name_ar     TEXT NOT NULL,
     type        TEXT NOT NULL,   -- 'card_back', 'table_skin', etc.
@@ -175,7 +175,7 @@ CREATE TABLE IF NOT EXISTS public.cosmetics (
 );
 
 CREATE TABLE IF NOT EXISTS public.user_cosmetics (
-    id              UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    id              UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     user_id         UUID NOT NULL REFERENCES public.users(id) ON DELETE CASCADE,
     cosmetic_id     UUID NOT NULL REFERENCES public.cosmetics(id) ON DELETE CASCADE,
     purchased_at    TIMESTAMPTZ NOT NULL DEFAULT NOW(),
@@ -203,8 +203,14 @@ ORDER BY u.elo_rating DESC;
 -- =============================================================================
 -- Set at the database level (not the cluster role level) to avoid affecting
 -- other databases in the same Postgres cluster.
-SELECT format('ALTER DATABASE %I SET log_statement = ''mod''', current_database())
-\gexec
+-- Note: requires superuser; skipped on managed Supabase where it isn't permitted.
+DO $audit$
+BEGIN
+    EXECUTE format('ALTER DATABASE %I SET log_statement = %L', current_database(), 'mod');
+EXCEPTION WHEN insufficient_privilege THEN
+    RAISE NOTICE 'Skipping ALTER DATABASE log_statement: insufficient privilege';
+END
+$audit$;
 
 -- =============================================================================
 -- UPDATED_AT TRIGGER

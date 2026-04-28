@@ -1,6 +1,4 @@
-id = "skrew-game"
-name = "Skrew Game"
-region = "us-east-1"
+project_id = "skrew-game"
 
 [api]
 port = 54321
