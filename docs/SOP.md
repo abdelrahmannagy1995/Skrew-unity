@@ -24,7 +24,7 @@
 4. Long-running branches (> 5 days) **must** rebase on `main` daily.
 
 ### 1.2 Local Setup Checklist
-1. Install **Unity 6000.0.32f1 LTS** via Unity Hub (the version is pinned in `ProjectSettings/ProjectVersion.txt`).
+1. Install **Unity 6000.3.14f1 LTS** via Unity Hub (the version is pinned in `ProjectSettings/ProjectVersion.txt`).
 2. Install **NuGetForUnity** via the Package Manager (already declared in `Packages/manifest.json`).
 3. Restore NuGet packages: `Window → NuGet → Restore Packages`. Required packages:
    - `Supabase` (≥ 0.16)

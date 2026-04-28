@@ -135,7 +135,7 @@ supabase functions deploy
 
 ## Engine Version
 
-**Pinned to Unity 6000.0.32f1 LTS (Unity 6)** via `ProjectSettings/ProjectVersion.txt`.
+**Pinned to Unity 6000.3.14f1 LTS (Unity 6)** via `ProjectSettings/ProjectVersion.txt`.
 Open the project with Unity Hub — it will offer to install the matching Editor automatically.
 
 ---

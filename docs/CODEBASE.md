@@ -30,7 +30,7 @@ This document is **descriptive** (it tells you *what's there*); the **prescripti
 │       └── UI/                 # HUD, grids, modals, effects
 ├── Packages/manifest.json      # UPM packages + scoped registries (OpenUPM)
 ├── ProjectSettings/
-│   └── ProjectVersion.txt      # Pinned to Unity 6000.0.32f1 LTS
+│   └── ProjectVersion.txt      # Pinned to Unity 6000.3.14f1 LTS
 ├── docs/                       # This documentation suite
 └── supabase/                   # Backend (separate from Unity)
     ├── config.toml
@@ -44,7 +44,7 @@ This document is **descriptive** (it tells you *what's there*); the **prescripti
 
 | Item | Pinned Version | Source |
 |------|---------------|--------|
-| Unity Editor | **6000.0.32f1 LTS** | `ProjectSettings/ProjectVersion.txt` |
+| Unity Editor | **6000.3.14f1 LTS** | `ProjectSettings/ProjectVersion.txt` |
 | Cinemachine | 3.1.2 | `Packages/manifest.json` |
 | Input System | 1.11.2 | `Packages/manifest.json` |
 | TextMeshPro | 3.2.0-pre.10 | `Packages/manifest.json` |
@@ -307,7 +307,7 @@ Plain Postgrest models matching the equivalent tables. **No setter validation** 
 
 | Command | Purpose |
 |---------|---------|
-| Open in Unity Hub | Editor opens project at the pinned `6000.0.32f1` LTS |
+| Open in Unity Hub | Editor opens project at the pinned `6000.3.14f1` LTS |
 | `Window → General → Test Runner → EditMode → Run All` | All non-PlayMode tests |
 | `Window → General → Test Runner → PlayMode → Run All` | Scene-bound tests |
 | `supabase db push` | Apply migrations to linked project |

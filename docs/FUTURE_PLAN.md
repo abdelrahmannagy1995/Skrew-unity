@@ -156,7 +156,7 @@ Become the **definitive global digital home of the Egyptian Screw card game**, e
 
 | Date | Decision | Rationale | Reviewed |
 |------|----------|-----------|----------|
-| 2026-04-15 | Pinned engine to Unity 6000.0.32f1 LTS | Two-year support window; first LTS with native iOS 18 support | Engineering lead |
+| 2026-04-15 | Pinned engine to Unity 6000.3.14f1 LTS | Recommended LTS release; two-year support window; first LTS with native iOS 18 support | Engineering lead |
 | 2026-04-20 | Chose Supabase over Firebase | Postgres power + Realtime + RLS + Edge Functions in one stack | CTO |
 | 2026-04-22 | MCTS over deep RL for AI v1 | Explainable behaviour; deterministic; cheap to run on-device | AI lead |
 | 2026-04-28 | Cosmetic-only monetization | Aligns with Apple/Google policy + community trust | Product + Legal |

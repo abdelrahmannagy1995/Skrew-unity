@@ -14,7 +14,7 @@ Skrew is a **client–server multiplayer card game**. The Unity client is a *thi
 
 ```mermaid
 flowchart LR
-    subgraph "Client (Unity 6000.0 LTS)"
+    subgraph "Client (Unity 6000.3 LTS)"
         UI["UI Layer<br/>(HUD, Grid, Modals)"]
         SM["State Machine<br/>(GameStateMachine)"]
         GL["GameLoop<br/>(partial class)"]
