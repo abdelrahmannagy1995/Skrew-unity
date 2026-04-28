@@ -121,6 +121,25 @@ supabase functions deploy
 
 ---
 
+## Documentation
+
+| Document | Purpose |
+|----------|---------|
+| [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) | System architecture with Mermaid diagrams (component, sequence, ER, state, deployment) |
+| [`docs/DESIGN_PATTERNS.md`](docs/DESIGN_PATTERNS.md) | Catalogue of design patterns used (Singleton, State, Observer, MCTS, FIFO, etc.) with code refs |
+| [`docs/CODEBASE.md`](docs/CODEBASE.md) | Per-namespace, per-class reference documentation |
+| [`docs/SOP.md`](docs/SOP.md) | Standard Operating Procedures: dev workflow, releases, incident response, on-call |
+| [`docs/FUTURE_PLAN.md`](docs/FUTURE_PLAN.md) | 18-month product roadmap, OKRs, risk register |
+
+---
+
+## Engine Version
+
+**Pinned to Unity 6000.0.32f1 LTS (Unity 6)** via `ProjectSettings/ProjectVersion.txt`.
+Open the project with Unity Hub — it will offer to install the matching Editor automatically.
+
+---
+
 ## Naming Conventions
 
 | Context | Convention | Example |

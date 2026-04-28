@@ -1,0 +1,4 @@
+-langversion:9.0
+-nullable:disable
+-warnaserror+
+-warnaserror-:CS0618
