@@ -199,9 +199,12 @@ FROM public.users u
 ORDER BY u.elo_rating DESC;
 
 -- =============================================================================
--- ADMIN AUDIT: Track all modifications with user + source metadata
+-- ADMIN AUDIT: Track all modifications – scoped to this database only
 -- =============================================================================
-ALTER ROLE postgres SET log_statement = 'mod';
+-- Set at the database level (not the cluster role level) to avoid affecting
+-- other databases in the same Postgres cluster.
+SELECT format('ALTER DATABASE %I SET log_statement = ''mod''', current_database())
+\gexec
 
 -- =============================================================================
 -- UPDATED_AT TRIGGER

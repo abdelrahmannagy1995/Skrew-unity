@@ -76,22 +76,23 @@ namespace ScrewGame.Networking
 
         private void HandlePresenceJoin(object sender, PresenceEventArgs args)
         {
-            var userId = args.Response?.Joins?.Keys.GetEnumerator().MoveNext() == true
-                ? args.Response.Joins.Keys.GetEnumerator().Current
-                : null;
-            if (userId != null) OnPlayerConnected?.Invoke(userId);
+            var joins = args.Response?.Joins;
+            if (joins == null) return;
+            var enumerator = joins.Keys.GetEnumerator();
+            if (enumerator.MoveNext())
+                OnPlayerConnected?.Invoke(enumerator.Current);
         }
 
         private void HandlePresenceLeave(object sender, PresenceEventArgs args)
         {
-            var userId = args.Response?.Leaves?.Keys.GetEnumerator().MoveNext() == true
-                ? args.Response.Leaves.Keys.GetEnumerator().Current
-                : null;
-            if (userId != null)
+            var leaves = args.Response?.Leaves;
+            if (leaves == null) return;
+            var enumerator = leaves.Keys.GetEnumerator();
+            if (enumerator.MoveNext())
             {
+                string userId = enumerator.Current;
                 Debug.LogWarning($"[Presence] Player {userId} disconnected. Spawning AI bot fallback.");
                 OnPlayerDisconnected?.Invoke(userId);
-                // GameManager will handle bot substitution
             }
         }
     }

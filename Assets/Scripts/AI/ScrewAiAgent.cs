@@ -240,7 +240,8 @@ namespace ScrewGame.AI
         /// </summary>
         public void AdjustDifficulty(float humanScoreDelta)
         {
-            float adjustment = humanScoreDelta > 0 ? 0.1f : -0.1f;
+            // Proportional adjustment clamped to ±0.15 per round for smooth transitions
+            float adjustment = Mathf.Clamp(humanScoreDelta * 0.02f, -0.15f, 0.15f);
             _difficultyLevel = Mathf.Clamp01(_difficultyLevel + adjustment);
             _mctsIterations  = Mathf.Max(50, Mathf.RoundToInt(BaseMctsIterations * _difficultyLevel));
             float retention  = Mathf.Lerp(0.4f, 1.0f, _difficultyLevel);

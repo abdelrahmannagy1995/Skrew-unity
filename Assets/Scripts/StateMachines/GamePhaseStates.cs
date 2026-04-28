@@ -48,11 +48,12 @@ namespace ScrewGame.StateMachines
                 }
 
                 // Transition to the first player's turn
+                string localId = ScrewGame.Core.SupabaseManager.Instance?.CurrentUserId ?? string.Empty;
                 machine.TransitionTo(new PlayerTurnState(new Dictionary<string, object>
                 {
                     { "current_seat", 0 },
                     { "reason", "info_phase_expired" },
-                }, ScrewGame.Core.SupabaseManager.Instance?.CurrentUserId));
+                }, localId));
             }
         }
 

@@ -176,16 +176,26 @@ async function updateEloRatings(
     playerElos[oppId] = Math.max(0, (playerElos[oppId] ?? 1000) - delta);
   }
 
-  // Persist updated ELOs
+  // Persist updated ELOs and win/loss counters separately
   for (const [uid, elo] of Object.entries(playerElos)) {
     const isWinner = uid === winnerId;
+    // Update ELO rating
     await supabase
       .from("users")
-      .update({
-        elo_rating: elo,
-        total_wins: isWinner ? supabase.rpc("increment", { row_id: uid, col: "total_wins" }) : undefined,
-        total_losses: !isWinner ? supabase.rpc("increment", { row_id: uid, col: "total_losses" }) : undefined,
-      })
+      .update({ elo_rating: elo })
       .eq("id", uid);
+
+    // Increment win or loss counter via raw SQL increment to avoid race conditions
+    if (isWinner) {
+      await supabase.rpc("increment_user_stat", {
+        p_user_id: uid,
+        p_column: "total_wins",
+      });
+    } else {
+      await supabase.rpc("increment_user_stat", {
+        p_user_id: uid,
+        p_column: "total_losses",
+      });
+    }
   }
 }

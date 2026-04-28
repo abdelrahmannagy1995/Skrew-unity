@@ -165,9 +165,24 @@ export function buildFullDeck(): Card[] {
     nameAr: "بونج",
   });
 
-  return deck; // 36 + 2 + 2 + 2 + 2 + 16 + 1 + 1 + 1 = 63... let me recount
-  // Actual: 36 numerical + 2(-1) + 2(+20) + 2(green) + 2(red) + 16(cmd) + 1(thief) + 1(ping) + 1(pong) = 63
-  // To reach 66/68, we add more numerical cards
+  // Extra numerical cards to reach 66 cards total:
+  // Current: 36 + 2 + 2 + 2 + 2 + 16 + 1 + 1 + 1 = 63
+  // Add 3 extra copies of low-value cards (0, 1, 2) to reach 66
+  const extraValues = [0, 1, 2];
+  for (let i = 0; i < extraValues.length; i++) {
+    deck.push({
+      id: crypto.randomUUID(),
+      cardKey: `num_extra_${extraValues[i]}_${i}`,
+      type: CardType.Numerical,
+      value: extraValues[i],
+      nameEn: `${extraValues[i]}`,
+      nameAr: `${extraValues[i]}`,
+    });
+  }
+
+  // Total: 66 cards (General / Thief / Doubles modes)
+  // Classic mode (no Thief, Ping, Pong) = 63 cards
+  return deck;
 }
 
 /** Filter deck by game mode. */

@@ -163,12 +163,15 @@ namespace ScrewGame.Entities
         // -----------------------------------------------------------------------
         private void OnAlaKefakCommandChosen(CommandCardId chosenCommand)
         {
-            // Create a temporary CardData with the chosen command and activate it
-            var tempCard = new CardData { CardType = CardType.Command, CommandId = chosenCommand };
-            var tempObj = gameObject.AddComponent<CommandCardObject>();
-            tempObj.Initialise(tempCard, GridIndex);
-            tempObj.OnCommandActivated();
-            Destroy(tempObj, 0.1f);
+            // Update this card's data to the chosen command and activate directly.
+            // Do NOT create a temporary object – its coroutines would be destroyed prematurely.
+            var emulatedData = new CardData { CardType = CardType.Command, CommandId = chosenCommand };
+            // Temporarily swap data and activate
+            var original = Data;
+            Initialise(emulatedData, GridIndex);
+            OnCommandActivated();
+            // Restore original data after activation (command effect is already in flight)
+            Initialise(original, GridIndex);
         }
     }
 }

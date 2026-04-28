@@ -86,7 +86,13 @@ namespace ScrewGame.Core
             deck.Add(new CardData { CardKey = "special_ping",  CardType = CardType.Special, Value = 0, SpecialId = SpecialCardId.Ping });
             deck.Add(new CardData { CardKey = "special_pong",  CardType = CardType.Special, Value = 0, SpecialId = SpecialCardId.Pong });
 
-            return deck; // 36 + 2 + 2 + 2 + 2 + 16 + 3 = 63 base cards
+            // Extra numerical cards to reach 66 total (matching server-side deck-definitions)
+            // 36 + 2 + 2 + 2 + 2 + 16 + 3 + 3 extra = 66
+            int[] extraValues = { 0, 1, 2 };
+            for (int i = 0; i < extraValues.Length; i++)
+                deck.Add(new CardData { CardKey = $"num_extra_{extraValues[i]}_{i}", CardType = CardType.Numerical, Value = extraValues[i] });
+
+            return deck; // 66 base cards (General mode)
         }
 
         private static void FilterByMode(List<CardData> deck, GameMode mode)
