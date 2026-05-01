@@ -1,0 +1,40 @@
+project_id = "skrew-game"
+
+[api]
+port = 54321
+schemas = ["public"]
+extra_search_path = ["public", "extensions"]
+
+[db]
+port = 54322
+shadow_port = 54320
+
+[studio]
+port = 54323
+
+[inbucket]
+port = 54324
+
+[storage.image_transformation]
+enabled = true
+
+[analytics]
+enabled = false
+
+[functions.deck-shuffle]
+verify_jwt = true
+
+[functions.game-tick]
+verify_jwt = false
+
+[functions.basra-resolve]
+verify_jwt = true
+
+[functions.score-calc]
+verify_jwt = false
+
+[functions.thief-guess]
+verify_jwt = true
+
+[functions.admob-ssv]
+verify_jwt = false
