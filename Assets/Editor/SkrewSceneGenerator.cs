@@ -37,11 +37,35 @@ namespace ScrewGame.EditorTools
                     "Cancel"))
                 return;
 
+            GenerateInternal(force: true);
+        }
+
+        /// <summary>
+        /// Auto-runs once the editor finishes its first compile. Idempotent — only
+        /// generates scenes that are missing, so it won't clobber edits made by hand.
+        /// </summary>
+        [InitializeOnLoadMethod]
+        private static void AutoGenerateOnFirstLoad()
+        {
+            // Defer until the asset database is in a stable state.
+            EditorApplication.delayCall += () =>
+            {
+                if (BuildPipeline.isBuildingPlayer || EditorApplication.isPlayingOrWillChangePlaymode)
+                    return;
+                if (File.Exists(BootstrapPath) && File.Exists(MenuPath) && File.Exists(GameplayPath))
+                    return;
+                GenerateInternal(force: false);
+            };
+        }
+
+        private static void GenerateInternal(bool force)
+        {
             Directory.CreateDirectory(SceneFolder);
 
-            CreateBootstrapScene();
-            CreateMenuScene();
-            CreateGameplayScene();
+            if (force || !File.Exists(BootstrapPath)) CreateBootstrapScene();
+            if (force || !File.Exists(MenuPath))      CreateMenuScene();
+            if (force || !File.Exists(GameplayPath))  CreateGameplayScene();
+
             RegisterInBuildSettings();
 
             AssetDatabase.SaveAssets();

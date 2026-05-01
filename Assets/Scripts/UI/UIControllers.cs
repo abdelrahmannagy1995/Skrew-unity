@@ -4,6 +4,7 @@ using DG.Tweening;
 using ScrewGame.Entities;
 using ScrewGame.Localization;
 using TMPro;
+using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -174,17 +175,17 @@ namespace ScrewGame.UI
         public static VisualEffects Instance { get; private set; }
 
         [SerializeField] private ParticleSystem _basraParticleBurst;
-        [SerializeField] private Cinemachine.CinemachineVirtualCamera _gameCamera;
+        [SerializeField] private CinemachineCamera _gameCamera;
         [SerializeField] private float _shakeAmplitude = 2f;
         [SerializeField] private float _shakeDuration  = 0.3f;
 
-        private Cinemachine.CinemachineBasicMultiChannelPerlin _noise;
+        private CinemachineBasicMultiChannelPerlin _noise;
 
         private void Awake()
         {
             Instance = this;
             if (_gameCamera != null)
-                _noise = _gameCamera.GetCinemachineComponent<Cinemachine.CinemachineBasicMultiChannelPerlin>();
+                _noise = _gameCamera.GetComponent<CinemachineBasicMultiChannelPerlin>();
         }
 
         public void PlayBasraSuccess(string playerId)
@@ -204,9 +205,9 @@ namespace ScrewGame.UI
         {
             if (_noise != null)
             {
-                _noise.m_AmplitudeGain = _shakeAmplitude;
+                _noise.AmplitudeGain = _shakeAmplitude;
                 yield return new WaitForSeconds(_shakeDuration);
-                _noise.m_AmplitudeGain = 0f;
+                _noise.AmplitudeGain = 0f;
             }
         }
     }
