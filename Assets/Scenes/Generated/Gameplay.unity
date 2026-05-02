@@ -491,21 +491,6 @@ Material:
     - _EmissionColorWithMapUI: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
---- !u!115 &82152135
-MonoScript:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  serializedVersion: 7
-  m_DefaultReferences: {}
-  m_Icon: {fileID: 0}
-  m_Type: 0
-  m_ExecutionOrder: 0
-  m_ClassName: HUDController
-  m_Namespace: ScrewGame.UI
-  m_AssemblyName: Assembly-CSharp
 --- !u!21 &95214258
 Material:
   serializedVersion: 8
@@ -1102,21 +1087,6 @@ Transform:
   - {fileID: 1201424178}
   m_Father: {fileID: 376267346}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!115 &249693863
-MonoScript:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  serializedVersion: 7
-  m_DefaultReferences: {}
-  m_Icon: {fileID: 0}
-  m_Type: 0
-  m_ExecutionOrder: 0
-  m_ClassName: CommandUI
-  m_Namespace: ScrewGame.UI
-  m_AssemblyName: Assembly-CSharp
 --- !u!1 &287102403
 GameObject:
   m_ObjectHideFlags: 0
@@ -1620,21 +1590,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 407262457}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!115 &455395712
-MonoScript:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  serializedVersion: 7
-  m_DefaultReferences: {}
-  m_Icon: {fileID: 0}
-  m_Type: 0
-  m_ExecutionOrder: 0
-  m_ClassName: VisualEffects
-  m_Namespace: ScrewGame.UI
-  m_AssemblyName: Assembly-CSharp
 --- !u!1 &460483075
 GameObject:
   m_ObjectHideFlags: 0
@@ -1705,21 +1660,6 @@ Transform:
   - {fileID: 851953116}
   m_Father: {fileID: 629260236}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!115 &501618310
-MonoScript:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  serializedVersion: 7
-  m_DefaultReferences: {}
-  m_Icon: {fileID: 0}
-  m_Type: 0
-  m_ExecutionOrder: 0
-  m_ClassName: TurnControlPanel
-  m_Namespace: ScrewGame.UI
-  m_AssemblyName: Assembly-CSharp
 --- !u!1 &515095027
 GameObject:
   m_ObjectHideFlags: 0
@@ -2881,21 +2821,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 702128901}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!115 &704072729
-MonoScript:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  serializedVersion: 7
-  m_DefaultReferences: {}
-  m_Icon: {fileID: 0}
-  m_Type: 0
-  m_ExecutionOrder: 0
-  m_ClassName: ThiefGuessModal
-  m_Namespace: ScrewGame.UI
-  m_AssemblyName: Assembly-CSharp
 --- !u!1 &764657140
 GameObject:
   m_ObjectHideFlags: 0
@@ -4030,7 +3955,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1206814106}
-  - component: {fileID: 1206814105}
   - component: {fileID: 1206814115}
   - component: {fileID: 1206814114}
   - component: {fileID: 1206814113}
@@ -4047,18 +3971,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1206814105
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1206814104}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1340466920}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ScrewGame.StateMachines.GameStateMachine
 --- !u!4 &1206814106
 Transform:
   m_ObjectHideFlags: 0
@@ -4083,13 +3995,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1206814104}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 455395712}
+  m_Script: {fileID: 11500000, guid: 1648b28ea285aae459b678880ff55249, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ScrewGame.UI.VisualEffects
-  _basraParticleBurst: {fileID: 0}
-  _gameCamera: {fileID: 0}
-  _shakeAmplitude: 2
-  _shakeDuration: 0.3
+  m_EditorClassIdentifier: Assembly-CSharp::ScrewGame.UI.CommandUI
 --- !u!114 &1206814108
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4099,9 +4007,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1206814104}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1803573851}
+  m_Script: {fileID: 11500000, guid: e96e79501f93c88458546ce6b17cb9bc, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ScrewGame.UI.ScoreboardUI
+  m_EditorClassIdentifier: Assembly-CSharp::ScrewGame.UI.VisualEffects
+  _basraParticleBurst: {fileID: 0}
+  _gameCamera: {fileID: 0}
+  _shakeAmplitude: 2
+  _shakeDuration: 0.3
 --- !u!114 &1206814109
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4111,9 +4023,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1206814104}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 704072729}
+  m_Script: {fileID: 11500000, guid: 370423e0526444d45953c7a0072bc39b, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ScrewGame.UI.ThiefGuessModal
+  m_EditorClassIdentifier: Assembly-CSharp::ScrewGame.UI.ScoreboardUI
 --- !u!114 &1206814110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4123,9 +4035,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1206814104}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1225289900}
+  m_Script: {fileID: 11500000, guid: 040009c017961d841bf39907ffcbb1d7, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ScrewGame.UI.AllGridsRevealController
+  m_EditorClassIdentifier: Assembly-CSharp::ScrewGame.UI.ThiefGuessModal
 --- !u!114 &1206814111
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4135,10 +4047,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 1206814104}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1960691908}
+  m_Script: {fileID: 11500000, guid: 24d2343e6162f854c88bb839d9643a17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ScrewGame.UI.AllGridsRevealController
+--- !u!114 &1206814112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1206814104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b5b41404c3ae03448e211d7ca16b257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ScrewGame.UI.OpponentGridManager
---- !u!114 &1206814112
+--- !u!114 &1206814113
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4155,21 +4079,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
---- !u!114 &1206814113
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1206814104}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 501618310}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ScrewGame.UI.TurnControlPanel
-  _drawButton: {fileID: 0}
-  _snatchButton: {fileID: 0}
-  _screwButton: {fileID: 0}
 --- !u!114 &1206814114
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4179,9 +4088,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1206814104}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 249693863}
+  m_Script: {fileID: 11500000, guid: 40d7cd9981ff91d4d8b63914d6cf20c9, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ScrewGame.UI.CommandUI
+  m_EditorClassIdentifier: Assembly-CSharp::ScrewGame.UI.TurnControlPanel
+  _drawButton: {fileID: 0}
+  _snatchButton: {fileID: 0}
+  _screwButton: {fileID: 0}
 --- !u!114 &1206814115
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4191,27 +4103,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1206814104}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 82152135}
+  m_Script: {fileID: 11500000, guid: 91a6cbf9119125d46a4f217e0bb4f200, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ScrewGame.UI.HUDController
   _messageText: {fileID: 0}
   _countdownText: {fileID: 0}
   _seatHighlights: []
---- !u!115 &1225289900
-MonoScript:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  serializedVersion: 7
-  m_DefaultReferences: {}
-  m_Icon: {fileID: 0}
-  m_Type: 0
-  m_ExecutionOrder: 0
-  m_ClassName: AllGridsRevealController
-  m_Namespace: ScrewGame.UI
-  m_AssemblyName: Assembly-CSharp
 --- !u!1 &1245403923
 GameObject:
   m_ObjectHideFlags: 0
@@ -4925,21 +4822,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1329940024}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!115 &1340466920
-MonoScript:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  serializedVersion: 7
-  m_DefaultReferences: {}
-  m_Icon: {fileID: 0}
-  m_Type: 0
-  m_ExecutionOrder: 0
-  m_ClassName: GameStateMachine
-  m_Namespace: ScrewGame.StateMachines
-  m_AssemblyName: Assembly-CSharp
 --- !u!1 &1369819088
 GameObject:
   m_ObjectHideFlags: 0
@@ -6094,21 +5976,6 @@ Material:
     - _EmissionColorWithMapUI: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
---- !u!115 &1803573851
-MonoScript:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  serializedVersion: 7
-  m_DefaultReferences: {}
-  m_Icon: {fileID: 0}
-  m_Type: 0
-  m_ExecutionOrder: 0
-  m_ClassName: ScoreboardUI
-  m_Namespace: ScrewGame.UI
-  m_AssemblyName: Assembly-CSharp
 --- !u!1 &1813559266
 GameObject:
   m_ObjectHideFlags: 0
@@ -6724,21 +6591,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 629260236}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!115 &1960691908
-MonoScript:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  serializedVersion: 7
-  m_DefaultReferences: {}
-  m_Icon: {fileID: 0}
-  m_Type: 0
-  m_ExecutionOrder: 0
-  m_ClassName: OpponentGridManager
-  m_Namespace: ScrewGame.UI
-  m_AssemblyName: Assembly-CSharp
 --- !u!1 &1979986889
 GameObject:
   m_ObjectHideFlags: 0
