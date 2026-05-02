@@ -114,28 +114,38 @@ namespace ScrewGame.Localization
         // When RTLTMPro is imported, it registers the RTLSupport namespace.
         // This method calls it via reflection so the Localization module compiles
         // even before the plugin is installed.
+        // Cached method reference so we only search assemblies once
+        private static System.Reflection.MethodInfo _fixRtlMethod;
+        private static bool _fixRtlSearched;
+
         public static string Process(string arabicText)
         {
             if (string.IsNullOrEmpty(arabicText)) return arabicText;
 
-#if RTLTMPRO_IMPORTED
-            // Direct call when RTLTMPro is present in the project
-            return RTLTMPro.RTLSupport.FixRTL(arabicText);
-#else
-            // Fallback: attempt via reflection to avoid hard dependency
-            var type = Type.GetType("RTLTMPro.RTLSupport, RTLTMPro");
-            if (type != null)
+            // Find RTLTMPro.RTLSupport.FixRTL in any loaded assembly (searches our stub too)
+            if (!_fixRtlSearched)
             {
-                var method = type.GetMethod("FixRTL", new[] { typeof(string) });
-                if (method != null)
-                    return method.Invoke(null, new object[] { arabicText }) as string ?? arabicText;
+                _fixRtlSearched = true;
+                foreach (var asm in AppDomain.CurrentDomain.GetAssemblies())
+                {
+                    try
+                    {
+                        var t = asm.GetType("RTLTMPro.RTLSupport");
+                        if (t != null)
+                        {
+                            _fixRtlMethod = t.GetMethod("FixRTL", new[] { typeof(string) });
+                            if (_fixRtlMethod != null) break;
+                        }
+                    }
+                    catch { /* skip problematic assemblies */ }
+                }
             }
 
-            // Last resort: reverse the string so at minimum it reads RTL
-            var chars = arabicText.ToCharArray();
-            Array.Reverse(chars);
-            return new string(chars);
-#endif
+            if (_fixRtlMethod != null)
+                return _fixRtlMethod.Invoke(null, new object[] { arabicText }) as string ?? arabicText;
+
+            // Absolute last resort: just return as-is (better than garbled reverse)
+            return arabicText;
         }
     }
 }
