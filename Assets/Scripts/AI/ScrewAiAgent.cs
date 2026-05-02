@@ -20,8 +20,9 @@ namespace ScrewGame.AI
     /// </summary>
     public class AiMemoryMatrix
     {
-        // memory[playerId][gridIndex] = known card value, or null if unknown
-        private readonly Dictionary<string, CardData?[]> _memory = new();
+        // memory[playerId][gridIndex] = known card value, or null if unknown.
+        // CardData is a reference type so the array slots can hold null directly.
+        private readonly Dictionary<string, CardData[]> _memory = new();
 
         // Probability that memory is retained each turn (1.0 = perfect, 0.0 = instant forget)
         private float _retentionRate;
@@ -30,7 +31,7 @@ namespace ScrewGame.AI
         {
             _retentionRate = Mathf.Clamp01(retentionRate);
             foreach (var pid in playerIds)
-                _memory[pid] = new CardData?[gridSize];
+                _memory[pid] = new CardData[gridSize];
         }
 
         // -----------------------------------------------------------------------
@@ -75,7 +76,7 @@ namespace ScrewGame.AI
         // Read operations
         // -----------------------------------------------------------------------
 
-        public CardData? GetKnownCard(string playerId, int index)
+        public CardData GetKnownCard(string playerId, int index)
         {
             if (_memory.TryGetValue(playerId, out var grid) && index < grid.Length)
                 return grid[index];
@@ -93,7 +94,7 @@ namespace ScrewGame.AI
             if (!_memory.TryGetValue(playerId, out var grid)) return float.MaxValue;
             float total = 0f;
             foreach (var card in grid)
-                total += card.HasValue ? card.Value.Value : unknownCardMean;
+                total += card != null ? card.Value : unknownCardMean;
             return total;
         }
 

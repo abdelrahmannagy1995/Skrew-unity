@@ -55,7 +55,7 @@ namespace ScrewGame.Networking
             });
         }
 
-        private void HandleBroadcast(object sender, Broadcast.BaseBroadcast e)
+        private void HandleBroadcast(object sender, Supabase.Realtime.Broadcast.BaseBroadcast e)
         {
             var payload = e.Payload<System.Collections.Generic.Dictionary<string, object>>();
             if (payload == null) return;
