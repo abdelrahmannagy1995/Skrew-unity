@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using ScrewGame.Entities;
+using ScrewGame.Localization;
 
 namespace ScrewGame.UI
 {
@@ -37,26 +38,26 @@ namespace ScrewGame.UI
         [SerializeField] private Sprite _spcGreenScrewSprite;
         [SerializeField] private Sprite _spcRedScrewSprite;
 
-        // ─── Arabic label tables ──────────────────────────────────
-        private static readonly Dictionary<CommandCardId, string> _cmdLabels = new()
+        // ─── Localization key tables ──────────────────────────────
+        private static readonly Dictionary<CommandCardId, string> _cmdKeys = new()
         {
-            { CommandCardId.PeekSelf,      "تلحق نفسك"   },
-            { CommandCardId.PeekOpponent,  "تلحق خصمك"   },
-            { CommandCardId.Basra,         "بصرة"         },
-            { CommandCardId.KhodWHat,      "خذ وحط"       },
-            { CommandCardId.KhodBas,       "خذ بس"        },
-            { CommandCardId.KaabDayer,     "كعب دائر"     },
-            { CommandCardId.AgabMaAgab,    "عجب ما عجب"   },
-            { CommandCardId.AlaKefak,      "على كيفك"     },
+            { CommandCardId.PeekSelf,      "card_peek_self"      },
+            { CommandCardId.PeekOpponent,  "card_peek_opponent"  },
+            { CommandCardId.Basra,         "card_basra"          },
+            { CommandCardId.KhodWHat,      "card_khod_w_hat"     },
+            { CommandCardId.KhodBas,       "card_khod_bas"       },
+            { CommandCardId.KaabDayer,     "card_kaab_dayer"     },
+            { CommandCardId.AgabMaAgab,    "card_agab_ma_agab"   },
+            { CommandCardId.AlaKefak,      "card_ala_kefak"      },
         };
 
-        private static readonly Dictionary<SpecialCardId, string> _spcLabels = new()
+        private static readonly Dictionary<SpecialCardId, string> _spcKeys = new()
         {
-            { SpecialCardId.Thief,       "سارق"        },
-            { SpecialCardId.Ping,        "بينج"         },
-            { SpecialCardId.Pong,        "بونج"         },
-            { SpecialCardId.GreenScrew,  "سكرو أخضر"   },
-            { SpecialCardId.RedScrew,    "سكرو أحمر"   },
+            { SpecialCardId.Thief,       "card_thief"       },
+            { SpecialCardId.Ping,        "card_ping"        },
+            { SpecialCardId.Pong,        "card_pong"        },
+            { SpecialCardId.GreenScrew,  "card_green_screw" },
+            { SpecialCardId.RedScrew,    "card_red_screw"   },
         };
 
         // ─── Runtime ─────────────────────────────────────────────
@@ -102,7 +103,8 @@ namespace ScrewGame.UI
         private void ApplyCommand(CommandCardId id)
         {
             SetFrontSprite(CommandSprite(id));
-            string label = _cmdLabels.TryGetValue(id, out string l) ? l : id.ToString();
+            string key   = _cmdKeys.TryGetValue(id, out string k) ? k : null;
+            string label = key != null ? LocalizationManager.T(key) : id.ToString();
             string sym   = CommandSymbol(id);
             SetTexts(sym, label, sym, sym);
         }
@@ -110,7 +112,8 @@ namespace ScrewGame.UI
         private void ApplySpecial(SpecialCardId id)
         {
             SetFrontSprite(SpecialSprite(id));
-            string label = _spcLabels.TryGetValue(id, out string l) ? l : id.ToString();
+            string key   = _spcKeys.TryGetValue(id, out string k) ? k : null;
+            string label = key != null ? LocalizationManager.T(key) : id.ToString();
             SetTexts("★", label, "★", "★");
         }
 

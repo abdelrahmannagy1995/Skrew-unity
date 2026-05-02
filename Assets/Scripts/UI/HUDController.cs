@@ -54,6 +54,13 @@ namespace ScrewGame.UI
             if (_countdownText != null) _countdownText.enabled = false;
         }
 
+        public void UpdateCountdown(int seconds)
+        {
+            if (_countdownText == null) return;
+            _countdownText.text    = seconds.ToString();
+            _countdownText.enabled = true;
+        }
+
         public void HighlightActiveSeat(int seatIndex)
         {
             if (_seatHighlights == null) return;
