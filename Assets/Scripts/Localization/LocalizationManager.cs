@@ -37,9 +37,9 @@ namespace ScrewGame.Localization
             Instance = this;
             DontDestroyOnLoad(gameObject);
 
-            // Load default locale from PlayerPrefs (or default to "en")
-            string saved = PlayerPrefs.GetString("locale", "en");
-            LoadLocale(saved);
+            // Force English locale as requested
+            LoadLocale("en");
+            PlayerPrefs.SetString("locale", "en");
         }
 
         // -----------------------------------------------------------------------
@@ -122,30 +122,8 @@ namespace ScrewGame.Localization
         {
             if (string.IsNullOrEmpty(arabicText)) return arabicText;
 
-            // Find RTLTMPro.RTLSupport.FixRTL in any loaded assembly (searches our stub too)
-            if (!_fixRtlSearched)
-            {
-                _fixRtlSearched = true;
-                foreach (var asm in AppDomain.CurrentDomain.GetAssemblies())
-                {
-                    try
-                    {
-                        var t = asm.GetType("RTLTMPro.RTLSupport");
-                        if (t != null)
-                        {
-                            _fixRtlMethod = t.GetMethod("FixRTL", new[] { typeof(string) });
-                            if (_fixRtlMethod != null) break;
-                        }
-                    }
-                    catch { /* skip problematic assemblies */ }
-                }
-            }
-
-            if (_fixRtlMethod != null)
-                return _fixRtlMethod.Invoke(null, new object[] { arabicText }) as string ?? arabicText;
-
-            // Absolute last resort: just return as-is (better than garbled reverse)
-            return arabicText;
+            // Direct call to our stub instead of reflection
+            return RTLTMPro.RTLSupport.FixRTL(arabicText);
         }
     }
 }
