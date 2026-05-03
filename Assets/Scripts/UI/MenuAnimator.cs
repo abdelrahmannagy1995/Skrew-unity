@@ -33,12 +33,15 @@ namespace ScrewGame.UI
             if (_titleGroup != null)  _titleGroup.alpha = 0f;
             if (_titleRect  != null)  _titleRect.anchoredPosition += Vector2.up * 80f;
 
-            foreach (RectTransform btn in _modeButtons)
+            if (_modeButtons != null)
             {
-                if (btn == null) continue;
-                CanvasGroup cg = btn.GetComponent<CanvasGroup>() ?? btn.gameObject.AddComponent<CanvasGroup>();
-                cg.alpha = 0f;
-                btn.anchoredPosition += Vector2.down * 40f;
+                foreach (RectTransform btn in _modeButtons)
+                {
+                    if (btn == null) continue;
+                    CanvasGroup cg = btn.GetComponent<CanvasGroup>() ?? btn.gameObject.AddComponent<CanvasGroup>();
+                    cg.alpha = 0f;
+                    btn.anchoredPosition += Vector2.down * 40f;
+                }
             }
         }
 
@@ -65,16 +68,22 @@ namespace ScrewGame.UI
             }
 
             // Buttons cascade
-            float delay = 0.2f;
-            for (int i = 0; i < _modeButtons.Length; i++)
+            if (_modeButtons != null)
             {
-                RectTransform btn = _modeButtons[i];
-                if (btn == null) continue;
-                CanvasGroup cg = btn.GetComponent<CanvasGroup>();
-                Vector2 finalBtnPos = btn.anchoredPosition + Vector2.down * 40f;
-                float d = delay + i * _buttonStagger;
-                seq.Insert(d, cg.DOFade(1f, 0.35f).SetEase(Ease.OutCubic));
-                seq.Insert(d, btn.DOAnchorPos(finalBtnPos, 0.35f).SetEase(Ease.OutBack));
+                float delay = 0.2f;
+                for (int i = 0; i < _modeButtons.Length; i++)
+                {
+                    RectTransform btn = _modeButtons[i];
+                    if (btn == null) continue;
+                    
+                    CanvasGroup cg = btn.GetComponent<CanvasGroup>();
+                    if (cg == null) continue;
+
+                    Vector2 finalBtnPos = btn.anchoredPosition + Vector2.down * 40f;
+                    float d = delay + i * _buttonStagger;
+                    seq.Insert(d, cg.DOFade(1f, 0.35f).SetEase(Ease.OutCubic));
+                    seq.Insert(d, btn.DOAnchorPos(finalBtnPos, 0.35f).SetEase(Ease.OutBack));
+                }
             }
         }
 

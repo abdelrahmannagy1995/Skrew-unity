@@ -29,6 +29,7 @@ namespace ScrewGame.UI
 
         private void Start()
         {
+            Debug.Log("[BootstrapController] Start");
             // Ensure locale is loaded
             ScrewGame.Localization.LocalizationManager.Instance?.SetLocale(
                 PlayerPrefs.GetString("locale", "en"));
@@ -40,6 +41,9 @@ namespace ScrewGame.UI
         {
             float elapsed = 0f;
             int   dotIdx  = 0;
+
+            // Force visibility for debug
+            if (_canvasGroup != null) _canvasGroup.alpha = 1f;
 
             while (elapsed < _splashDuration)
             {
@@ -53,8 +57,9 @@ namespace ScrewGame.UI
                 if (_loadingText != null)
                 {
                     dotIdx = Mathf.FloorToInt(elapsed * 2f) % _dots.Length;
-                    _loadingText.text = ScrewGame.Localization.LocalizationManager.T("loading")
-                                        .TrimEnd('.') + _dots[dotIdx];
+                    string loadingBase = ScrewGame.Localization.LocalizationManager.T("loading");
+                    if (string.IsNullOrEmpty(loadingBase) || loadingBase == "loading") loadingBase = "Loading";
+                    _loadingText.text = loadingBase.TrimEnd('.') + _dots[dotIdx];
                 }
 
                 yield return null;

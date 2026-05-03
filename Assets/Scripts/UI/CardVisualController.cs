@@ -124,10 +124,29 @@ namespace ScrewGame.UI
 
         private void SetTexts(string centre, string name, string tl, string br)
         {
-            if (_valueText     != null) { _valueText.text     = centre; }
-            if (_labelText     != null) { _labelText.text     = name;   }
-            if (_cornerValueTL != null) { _cornerValueTL.text = tl;     }
-            if (_cornerValueBR != null) { _cornerValueBR.text = br;     }
+            bool rtl = LocalizationManager.Instance != null && LocalizationManager.Instance.IsRtl;
+            TMP_FontAsset font = null;
+            
+            if (rtl)
+            {
+                font = Resources.Load<TMP_FontAsset>("Fonts/Skrew_Arabic_Font");
+            }
+            else
+            {
+                font = Resources.Load<TMP_FontAsset>("Fonts & Materials/LiberationSans SDF");
+            }
+
+            ApplyTextAndFont(_valueText, centre, font);
+            ApplyTextAndFont(_labelText, name, font);
+            ApplyTextAndFont(_cornerValueTL, tl, font);
+            ApplyTextAndFont(_cornerValueBR, br, font);
+        }
+
+        private void ApplyTextAndFont(TextMeshPro tmp, string text, TMP_FontAsset font)
+        {
+            if (tmp == null) return;
+            tmp.text = text;
+            if (font != null) tmp.font = font;
         }
 
         private static string CommandSymbol(CommandCardId id)

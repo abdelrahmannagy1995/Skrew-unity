@@ -1,6 +1,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using ScrewGame.Localization;
 
 namespace ScrewGame.UI
 {
@@ -19,8 +20,19 @@ namespace ScrewGame.UI
         public void ShowMessage(string message)
         {
             if (_messageText == null) return;
+            UpdateFont(_messageText);
             _messageText.text    = message;
             _messageText.enabled = true;
+        }
+
+        private void UpdateFont(TextMeshProUGUI tmp)
+        {
+            if (tmp == null) return;
+            bool rtl = LocalizationManager.Instance != null && LocalizationManager.Instance.IsRtl;
+            var font = rtl 
+                ? Resources.Load<TMP_FontAsset>("Fonts/Skrew_Arabic_Font")
+                : Resources.Load<TMP_FontAsset>("Fonts & Materials/LiberationSans SDF");
+            if (font != null) tmp.font = font;
         }
 
         public void HideMessage()
@@ -30,6 +42,7 @@ namespace ScrewGame.UI
 
         public void ShowCountdown(float duration, string prefix = "")
         {
+            UpdateFont(_countdownText);
             if (_countdownCoroutine != null) StopCoroutine(_countdownCoroutine);
             _countdownCoroutine = StartCoroutine(CountdownRoutine(duration, prefix));
         }

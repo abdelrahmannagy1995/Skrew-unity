@@ -37,17 +37,29 @@ namespace ScrewGame.UI
             Apply();
         }
 
-        private void Apply()
+        public void Apply()
         {
+            if (_tmp == null) _tmp = GetComponent<TMP_Text>();
             if (_tmp == null || string.IsNullOrEmpty(_key)) return;
 
             string text = LocalizationManager.T(_key);
             _tmp.text = text;
-
-            // RTL layout
+            
             bool rtl = LocalizationManager.Instance != null && LocalizationManager.Instance.IsRtl;
             _tmp.alignment = rtl ? TextAlignmentOptions.Right : TextAlignmentOptions.Left;
-            // Note: for full RTL support install RTLTMPro and use its RTLTextMeshPro component.
+
+            // Handle font switching based on locale
+            if (rtl)
+            {
+                var arabicFont = Resources.Load<TMP_FontAsset>("Fonts/Skrew_Arabic_Font");
+                if (arabicFont != null) _tmp.font = arabicFont;
+            }
+            else
+            {
+                // Revert to a standard font for English
+                var defaultFont = Resources.Load<TMP_FontAsset>("Fonts & Materials/LiberationSans SDF");
+                if (defaultFont != null) _tmp.font = defaultFont;
+            }
         }
     }
 }

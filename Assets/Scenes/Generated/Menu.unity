@@ -178,7 +178,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u2715"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 728a6add8c538ff429f675f2669bc179, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 69d41c7006e683f48b2e838d60cce615, type: 2}
   m_sharedMaterial: {fileID: 1922150563}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -390,7 +390,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u265F\uFE0F Classic"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 728a6add8c538ff429f675f2669bc179, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 69d41c7006e683f48b2e838d60cce615, type: 2}
   m_sharedMaterial: {fileID: 1922150563}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -410,7 +410,7 @@ MonoBehaviour:
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: 0
+  m_TextStyleHashCode: -1183493901
   m_overrideHtmlColors: 0
   m_faceColor:
     serializedVersion: 2
@@ -554,6 +554,7 @@ GameObject:
   - component: {fileID: 210257743}
   - component: {fileID: 210257745}
   - component: {fileID: 210257744}
+  - component: {fileID: 210257746}
   m_Layer: 0
   m_Name: GameTitle
   m_TagString: Untagged
@@ -600,16 +601,16 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u0633\u0643\u0631\u0648"
+  m_text: SCREW
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 728a6add8c538ff429f675f2669bc179, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 69d41c7006e683f48b2e838d60cce615, type: 2}
   m_sharedMaterial: {fileID: 1922150563}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4281588223
   m_fontColor: {r: 1, g: 0.85, b: 0.2, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -622,7 +623,7 @@ MonoBehaviour:
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: 0
+  m_TextStyleHashCode: -1183493901
   m_overrideHtmlColors: 0
   m_faceColor:
     serializedVersion: 2
@@ -680,6 +681,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 210257742}
   m_CullTransparentMesh: 1
+--- !u!114 &210257746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 210257742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d41779f3a7f1d714fa9c640e1e198a26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ScrewGame.UI.LocalizedText
+  _key: app_name
 --- !u!1 &279286721
 GameObject:
   m_ObjectHideFlags: 0
@@ -906,7 +920,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u25C0 \u0627\u0644\u0633\u0627\u0628\u0642"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 728a6add8c538ff429f675f2669bc179, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 69d41c7006e683f48b2e838d60cce615, type: 2}
   m_sharedMaterial: {fileID: 1922150563}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1043,7 +1057,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: EN
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 728a6add8c538ff429f675f2669bc179, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 69d41c7006e683f48b2e838d60cce615, type: 2}
   m_sharedMaterial: {fileID: 1922150563}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1063,7 +1077,7 @@ MonoBehaviour:
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: 0
+  m_TextStyleHashCode: -1183493901
   m_overrideHtmlColors: 0
   m_faceColor:
     serializedVersion: 2
@@ -1181,7 +1195,7 @@ MonoBehaviour:
   m_text: "\u0647\u062F\u0641\u0643 \u0647\u0648 \u062A\u062C\u0645\u064A\u0639 \u0623\u0642\u0644
     \u0645\u062C\u0645\u0648\u0639 \u0646\u0642\u0627\u0637 \u0645\u0645\u0643\u0646."
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 728a6add8c538ff429f675f2669bc179, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 69d41c7006e683f48b2e838d60cce615, type: 2}
   m_sharedMaterial: {fileID: 1922150563}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1318,7 +1332,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\U0001F3B4 \u0647\u062F\u0641 \u0627\u0644\u0644\u0639\u0628\u0629"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 728a6add8c538ff429f675f2669bc179, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 69d41c7006e683f48b2e838d60cce615, type: 2}
   m_sharedMaterial: {fileID: 1922150563}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1455,7 +1469,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\U0001F9B9 Thief"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 728a6add8c538ff429f675f2669bc179, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 69d41c7006e683f48b2e838d60cce615, type: 2}
   m_sharedMaterial: {fileID: 1922150563}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1475,7 +1489,7 @@ MonoBehaviour:
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: 0
+  m_TextStyleHashCode: -1183493901
   m_overrideHtmlColors: 0
   m_faceColor:
     serializedVersion: 2
@@ -1688,8 +1702,8 @@ RectTransform:
   - {fileID: 1366346163}
   m_Father: {fileID: 958755042}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 900, y: 145}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1834,7 +1848,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 1 / 6
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 728a6add8c538ff429f675f2669bc179, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 69d41c7006e683f48b2e838d60cce615, type: 2}
   m_sharedMaterial: {fileID: 1922150563}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -2101,7 +2115,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: AR
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 728a6add8c538ff429f675f2669bc179, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 69d41c7006e683f48b2e838d60cce615, type: 2}
   m_sharedMaterial: {fileID: 1922150563}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -2121,7 +2135,7 @@ MonoBehaviour:
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: 0
+  m_TextStyleHashCode: -1183493901
   m_overrideHtmlColors: 0
   m_faceColor:
     serializedVersion: 2
@@ -2238,7 +2252,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\U0001F3B4 General"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 728a6add8c538ff429f675f2669bc179, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 69d41c7006e683f48b2e838d60cce615, type: 2}
   m_sharedMaterial: {fileID: 1922150563}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -2258,7 +2272,7 @@ MonoBehaviour:
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: 0
+  m_TextStyleHashCode: -1183493901
   m_overrideHtmlColors: 0
   m_faceColor:
     serializedVersion: 2
@@ -2375,14 +2389,14 @@ MonoBehaviour:
       m_Calls: []
   m_text: v0.1.0-alpha
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 728a6add8c538ff429f675f2669bc179, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 69d41c7006e683f48b2e838d60cce615, type: 2}
   m_sharedMaterial: {fileID: 1922150563}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 2575335552
   m_fontColor: {r: 0.5, g: 0.5, b: 0.5, a: 0.6}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -2395,7 +2409,7 @@ MonoBehaviour:
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: 0
+  m_TextStyleHashCode: -1183493901
   m_overrideHtmlColors: 0
   m_faceColor:
     serializedVersion: 2
@@ -2769,7 +2783,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\U0001F3AD Doubles"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 728a6add8c538ff429f675f2669bc179, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 69d41c7006e683f48b2e838d60cce615, type: 2}
   m_sharedMaterial: {fileID: 1922150563}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -2789,7 +2803,7 @@ MonoBehaviour:
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: 0
+  m_TextStyleHashCode: -1183493901
   m_overrideHtmlColors: 0
   m_faceColor:
     serializedVersion: 2
@@ -2906,7 +2920,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u2753 \u0643\u064A\u0641\u064A\u0629 \u0627\u0644\u0644\u0639\u0628"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 728a6add8c538ff429f675f2669bc179, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 69d41c7006e683f48b2e838d60cce615, type: 2}
   m_sharedMaterial: {fileID: 1922150563}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -2926,7 +2940,7 @@ MonoBehaviour:
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: 0
+  m_TextStyleHashCode: -1183493901
   m_overrideHtmlColors: 0
   m_faceColor:
     serializedVersion: 2
@@ -3018,8 +3032,8 @@ RectTransform:
   - {fileID: 959002869}
   m_Father: {fileID: 892220652}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -3258,7 +3272,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u0627\u0644\u062A\u0627\u0644\u064A \u25B6"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 728a6add8c538ff429f675f2669bc179, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 69d41c7006e683f48b2e838d60cce615, type: 2}
   m_sharedMaterial: {fileID: 1922150563}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -3441,8 +3455,8 @@ RectTransform:
   - {fileID: 201905656}
   m_Father: {fileID: 958755042}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 900, y: 145}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -3562,8 +3576,8 @@ RectTransform:
   - {fileID: 531581971}
   m_Father: {fileID: 958755042}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 900, y: 145}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -3804,8 +3818,8 @@ RectTransform:
   - {fileID: 341743525}
   m_Father: {fileID: 892220652}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -3970,7 +3984,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
@@ -4046,6 +4060,65 @@ MonoBehaviour:
   _labelClassic: {fileID: 0}
   _labelThief: {fileID: 0}
   _labelDoubles: {fileID: 0}
+--- !u!1 &1804264481
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1804264484}
+  - component: {fileID: 1804264483}
+  - component: {fileID: 1804264482}
+  m_Layer: 0
+  m_Name: _GlobalManagers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1804264482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1804264481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd92f0539b6349440bdeeb3191ccabea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ScrewGame.Core.SupabaseManager
+  _supabaseUrl: 
+  _supabaseAnonKey: 
+--- !u!114 &1804264483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1804264481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be4802bfa4da6da4385ceaddcae4cdfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ScrewGame.Localization.LocalizationManager
+--- !u!4 &1804264484
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1804264481}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1871908265
 GameObject:
   m_ObjectHideFlags: 0
@@ -4268,8 +4341,8 @@ RectTransform:
   - {fileID: 1035450495}
   m_Father: {fileID: 958755042}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 900, y: 145}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -4363,3 +4436,4 @@ SceneRoots:
   - {fileID: 1206814106}
   - {fileID: 1589663817}
   - {fileID: 1273824883}
+  - {fileID: 1804264484}
